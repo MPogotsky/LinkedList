@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/C++PROJECTS/Containers/ListNode/List.cpp
+List.h
+D:/C++PROJECTS/Containers/ListNode/List.h
+
+D:/C++PROJECTS/Containers/ListNode/List.h
+List.cpp
+D:/C++PROJECTS/Containers/ListNode/List.cpp
+
+D:/C++PROJECTS/Containers/ListNode/main.cpp
+iostream
+-
+List.h
+D:/C++PROJECTS/Containers/ListNode/List.h
+
