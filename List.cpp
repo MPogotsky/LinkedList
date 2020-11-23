@@ -39,7 +39,29 @@ void List<T>::showList() {
     Node <T> *current = this->head;
 
     while (current != nullptr) {
-        cout << current -> value << endl;
-        current = current -> next;
+        cout << current->value << endl;
+        current = current->next;
     }
+}
+
+template<typename T>
+T &List<T>::operator[](int index) const{
+
+    int count = 0;
+    Node<int> *current = this->head;
+
+    while (current != nullptr) {
+        if (count == index) {
+            return current->value;
+        } else {
+            count++;
+            current = current->next;
+        }
+    }
+
+}
+
+template<typename T>
+void List<T>::pop_front() {
+    
 }

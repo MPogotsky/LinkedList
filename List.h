@@ -2,34 +2,40 @@
 #define LISTNODE_LIST_H
 
 template<typename T>
-class List{
+class List {
 public:
     List();
+
     ~List();
+
+    void pop_front();
 
     void push_back(T data);
 
-    int getSize(){
+    void showList();
+
+    int getSize() {
         return size;
     }
 
-    void showList();
+    T &operator[](int index) const;
 
 private:
 
     template<typename Type>
-    class Node{
+    class Node {
     public:
         Node(const Type &val)
-                :value(val), next(nullptr){};
+                : value(val), next(nullptr) {};
 
         Node *next;
         Type value;
 
-        ~Node(){};
+        ~Node() {};
     };
 
     int size;
+    //Pointer to the first element of the list
     Node<T> *head;
 
 };

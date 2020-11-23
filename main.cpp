@@ -10,8 +10,12 @@ int main() {
     lst.push_back(5);
     lst.push_back(10);
     lst.push_back(22);
-    lst.showList();
+
     cout << "Size: " <<lst.getSize() << endl;
+
+    lst.showList();
+    cout << "Operator overloading: " << lst[2] << endl;
+
 
     return 0;
 }
