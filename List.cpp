@@ -9,7 +9,7 @@ List<T>::List()
 
 template<typename T>
 List<T>::~List() {
-
+    clear();
 }
 
 template<typename T>
@@ -39,13 +39,14 @@ void List<T>::showList() {
     Node <T> *current = this->head;
 
     while (current != nullptr) {
-        cout << current->value << endl;
+        cout << current->value << " ";
         current = current->next;
     }
+    cout << endl;
 }
 
 template<typename T>
-T &List<T>::operator[](int index) const{
+T &List<T>::operator[](int index) const {
 
     int count = 0;
     Node<int> *current = this->head;
@@ -58,10 +59,89 @@ T &List<T>::operator[](int index) const{
             current = current->next;
         }
     }
-
 }
 
 template<typename T>
 void List<T>::pop_front() {
-    
+
+    Node <T> *tmp = this->head;
+
+    head = head->next;
+    delete tmp;
+    size--;
+}
+
+template<typename T>
+void List<T>::clear() {
+    while (size) {
+        pop_front();
+    }
+}
+
+template<typename T>
+void List<T>::pop_back() {
+
+    Node <T> *current = this->head;
+
+    while (current->next->next != nullptr) {
+        current = current->next;
+    }
+
+    delete current->next;
+    current->next = nullptr;
+    size--;
+}
+
+template<typename T>
+void List<T>::push_front(T data) {
+
+    Node <T> *current = this->head;
+
+    head = new Node<T>(data);
+    head->next = current;
+
+    size++;
+}
+
+template<typename T>
+void List<T>::insert(T data, int index) {
+    if (index == 0) {
+        pop_front();
+        push_front(data);
+
+    } else if (index == (size - 1)) {
+        pop_back();
+        push_back(data);
+
+    } else {
+
+        //Redo that part of method. Make it real insert, not replacing values :)
+
+//        Node <T> *current = head;
+//        int count = 0;
+//
+//        while (count != index) {
+//            current = current->next;
+//            count++;
+//        }
+//
+//        current->value = data;
+    }
+}
+
+template<typename T>
+void List<T>::erase_at(int index) {
+    if(index == 0){
+        pop_front();
+
+    }else if(index == (size-1)){
+        pop_back();
+
+    }else{
+
+        //Finish erase method
+
+        }
+
+    }
 }

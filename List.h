@@ -10,7 +10,17 @@ public:
 
     void pop_front();
 
+    void pop_back();
+
     void push_back(T data);
+
+    void push_front(T data);
+
+    void clear();
+
+    void insert(T data, int index);
+
+    void erase_at(int index);
 
     void showList();
 
@@ -35,6 +45,7 @@ private:
     };
 
     int size;
+
     //Pointer to the first element of the list
     Node<T> *head;
 
