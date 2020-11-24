@@ -83,11 +83,13 @@ void List<T>::pop_back() {
 
     Node <T> *current = this->head;
 
+    //Searching for last element of the list
     while (current->next->next != nullptr) {
         current = current->next;
     }
-
+    //Deletes last element
     delete current->next;
+    //Assigns nuttptr to the next pointer of last element, because it is the last element of the list
     current->next = nullptr;
     size--;
 }
@@ -97,6 +99,7 @@ void List<T>::push_front(T data) {
 
     Node <T> *current = this->head;
 
+    //Creates new node and making it pointer next to point to the previous head pointer
     head = new Node<T>(data);
     head->next = current;
 
@@ -105,14 +108,16 @@ void List<T>::push_front(T data) {
 
 template<typename T>
 void List<T>::insert(T data, int index) {
+    //If it is beginning of the list we can simply use push_front method
     if (index == 0) {
         push_front(data);
 
+        //If it is last element of the list we use push_front method
     } else if (index == (size - 1)) {
         push_back(data);
 
     } else {
-        //Redo that part of method. Make it real insert, not replacing values :)
+
         Node <T> *previous = this->head;
         int count;
 
@@ -121,7 +126,10 @@ void List<T>::insert(T data, int index) {
             count++;
         }
 
+        //Creating new node to replace it with previous one
         auto *newNode = new Node<T>(data, previous->next);
+        //Changing pointer to the previous element of the list to point to the new one
+        // in order not to loose pointer connection
         previous->next = newNode;
 
         size++;
@@ -144,10 +152,12 @@ void List<T>::erase_at(int index) {
             current = current -> next;
         }
 
-        Node <T> *tmp = current ->next;
+        //Creating tmp pointer to have pointer to node to delete
+        Node <T> *toDelete = current ->next;
+        //Making pointer to the previous element to point to an element through one
         current ->next = current ->next -> next;
 
-        delete tmp;
+        delete toDelete;
         size --;
     }
 
