@@ -106,42 +106,51 @@ void List<T>::push_front(T data) {
 template<typename T>
 void List<T>::insert(T data, int index) {
     if (index == 0) {
-        pop_front();
         push_front(data);
 
     } else if (index == (size - 1)) {
-        pop_back();
         push_back(data);
 
     } else {
-
         //Redo that part of method. Make it real insert, not replacing values :)
+        Node <T> *previous = this->head;
+        int count;
 
-//        Node <T> *current = head;
-//        int count = 0;
-//
-//        while (count != index) {
-//            current = current->next;
-//            count++;
-//        }
-//
-//        current->value = data;
+        for (int i = 0; i < index - 1; i++) {
+            previous = previous->next;
+            count++;
+        }
+
+        auto *newNode = new Node<T>(data, previous->next);
+        previous->next = newNode;
+
+        size++;
     }
 }
 
 template<typename T>
 void List<T>::erase_at(int index) {
-    if(index == 0){
+    if (index == 0) {
         pop_front();
 
-    }else if(index == (size-1)){
+    } else if (index == (size - 1)) {
         pop_back();
 
-    }else{
+    } else {
 
-        //Finish erase method
+        Node <T> *current = this-> head;
 
+        for(int i = 0; i < index-1; i++){
+            current = current -> next;
         }
 
+        Node <T> *tmp = current ->next;
+        current ->next = current ->next -> next;
+
+        delete tmp;
+        size --;
     }
+
 }
+
+

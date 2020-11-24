@@ -35,8 +35,8 @@ private:
     template<typename Type>
     class Node {
     public:
-        Node(const Type &val)
-                : value(val), next(nullptr) {};
+        Node(const Type &val, Node *nxt = nullptr)
+                : value(val), next(nxt) {};
 
         Node *next;
         Type value;
